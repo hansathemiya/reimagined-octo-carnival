@@ -1,0 +1,597 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>About — GSafe Geological Risk Assessment</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --black: #000000;
+      --white: #ffffff;
+      --deep-blue: #0a2540;
+      --subtle-green: #4caf50;
+      --light-gray: #f5f7fa;
+      --medium-gray: #e0e5ec;
+      --border-radius: 12px;
+      --shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      background-color: var(--white);
+      color: var(--black);
+      line-height: 1.6;
+    }
+
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+
+    .container {
+      width: 100%;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 1.5rem;
+    }
+
+    /* Header & Navigation */
+    header {
+      background-color: var(--white);
+      box-shadow: var(--shadow);
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      z-index: 1000;
+    }
+
+    .header-container {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1rem 1.5rem;
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      font-weight: 700;
+      font-size: 1.25rem;
+      color: var(--deep-blue);
+    }
+
+    .logo img {
+      height: 32px;
+      width: auto;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 1.5rem;
+      list-style: none;
+    }
+
+    .nav-links a {
+      font-weight: 500;
+      color: var(--black);
+      transition: color 0.2s;
+    }
+
+    .nav-links a:hover {
+      color: var(--subtle-green);
+    }
+
+    .hamburger {
+      display: none;
+      flex-direction: column;
+      cursor: pointer;
+      gap: 4px;
+    }
+
+    .hamburger span {
+      width: 24px;
+      height: 2px;
+      background-color: var(--black);
+      transition: 0.3s;
+    }
+
+    /* Hero Section */
+    .hero {
+      background-color: var(--light-gray);
+      padding: 8rem 0 4rem;
+      text-align: center;
+    }
+
+    .hero h1 {
+      font-size: 2.25rem;
+      font-weight: 700;
+      margin-bottom: 1rem;
+      color: var(--deep-blue);
+    }
+
+    .hero p {
+      font-size: 1.125rem;
+      max-width: 700px;
+      margin: 0 auto;
+      color: var(--black);
+    }
+
+    /* Section Base */
+    section {
+      padding: 4rem 0;
+    }
+
+    .section-title {
+      text-align: center;
+      font-size: 2rem;
+      font-weight: 700;
+      margin-bottom: 2.5rem;
+      color: var(--deep-blue);
+    }
+
+    .section-content p {
+      max-width: 700px;
+      margin: 0 auto 1.25rem;
+      font-size: 1.05rem;
+    }
+
+    /* Feature Cards */
+    .features-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 1.5rem;
+    }
+
+    .feature-card {
+      background: var(--white);
+      border-radius: var(--border-radius);
+      padding: 1.75rem;
+      box-shadow: var(--shadow);
+      text-align: center;
+    }
+
+    .feature-card h3 {
+      font-size: 1.25rem;
+      margin-bottom: 0.75rem;
+      color: var(--deep-blue);
+    }
+
+    /* Team Cards */
+    .team-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 1.5rem;
+    }
+
+    .team-card {
+      background: var(--white);
+      border-radius: var(--border-radius);
+      padding: 1.75rem;
+      box-shadow: var(--shadow);
+    }
+
+    .team-card h3 {
+      font-size: 1.25rem;
+      margin-bottom: 0.5rem;
+      color: var(--deep-blue);
+    }
+
+    /* Process */
+    .process-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 2rem;
+      text-align: center;
+    }
+
+    .process-step {
+      padding: 1.5rem;
+    }
+
+    .process-step h3 {
+      font-size: 1.25rem;
+      margin-bottom: 0.75rem;
+      color: var(--deep-blue);
+    }
+
+    /* Contact Form */
+    .contact-form {
+      max-width: 600px;
+      margin: 0 auto;
+    }
+
+    .form-group {
+      margin-bottom: 1.25rem;
+    }
+
+    .form-group label {
+      display: block;
+      margin-bottom: 0.5rem;
+      font-weight: 500;
+      color: var(--deep-blue);
+    }
+
+    .form-control {
+      width: 100%;
+      padding: 0.75rem;
+      border: 1px solid var(--medium-gray);
+      border-radius: var(--border-radius);
+      font-family: inherit;
+      font-size: 1rem;
+    }
+
+    .form-control:focus {
+      outline: none;
+      border-color: var(--subtle-green);
+    }
+
+    .form-message {
+      margin-top: 1rem;
+      padding: 0.75rem;
+      border-radius: var(--border-radius);
+      display: none;
+    }
+
+    .form-message.success {
+      background-color: #e8f5e9;
+      color: #2e7d32;
+      display: block;
+    }
+
+    .form-message.error {
+      background-color: #ffebee;
+      color: #c62828;
+      display: block;
+    }
+
+    /* Footer */
+    footer {
+      background-color: var(--deep-blue);
+      color: var(--white);
+      padding: 3rem 0 1.5rem;
+    }
+
+    .footer-content {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 2rem;
+      margin-bottom: 2rem;
+    }
+
+    .footer-brand h3 {
+      font-size: 1.25rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .footer-brand p {
+      font-size: 0.875rem;
+      opacity: 0.8;
+    }
+
+    .footer-links {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
+    }
+
+    .footer-links a {
+      opacity: 0.9;
+      transition: opacity 0.2s;
+    }
+
+    .footer-links a:hover {
+      opacity: 1;
+    }
+
+    .footer-contact p {
+      font-size: 0.875rem;
+    }
+
+    .footer-bottom {
+      text-align: center;
+      font-size: 0.875rem;
+      opacity: 0.7;
+      padding-top: 1.5rem;
+      border-top: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      .nav-links {
+        display: none;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        right: 0;
+        background: var(--white);
+        flex-direction: column;
+        padding: 1rem;
+        gap: 1rem;
+        box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+      }
+
+      .nav-links.active {
+        display: flex;
+      }
+
+      .hamburger {
+        display: flex;
+      }
+
+      .hero h1 {
+        font-size: 1.75rem;
+      }
+
+      .hero p {
+        font-size: 1rem;
+      }
+
+      .section-title {
+        font-size: 1.5rem;
+      }
+    }
+
+    .btn {
+      display: inline-block;
+      padding: 0.75rem 1.5rem;
+      background-color: var(--subtle-green);
+      color: var(--white);
+      border-radius: var(--border-radius);
+      font-weight: 600;
+      transition: background-color 0.2s;
+      border: none;
+      cursor: pointer;
+      text-align: center;
+      text-decoration: none;
+    }
+
+    .btn:hover {
+      background-color: #3d8b40;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="header-container">
+      <a href="/" class="logo">
+        <img src="/static/logo.png" alt="GSafe Logo" />
+        <span>GSafe</span>
+      </a>
+      <nav>
+        <ul class="nav-links" id="navLinks">
+          <li><a href="/">Home</a></li>
+          <li><a href="/services">Services</a></li>
+          <li><a href="/pricing">Pricing</a></li>
+          <li><a href="/about">About</a></li>
+          <li><a href="/contact">Contact</a></li>
+        </ul>
+        <div class="hamburger" id="hamburger">
+          <span></span>
+          <span></span>
+          <span></span>
+        </div>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="container">
+        <h1>About GSafe</h1>
+        <p>Professional geological risk evaluations to protect homes, land, and communities across Sri Lanka.</p>
+      </div>
+    </section>
+
+    <section>
+      <div class="container">
+        <h2 class="section-title">Our Mission</h2>
+        <div class="section-content">
+          <p>GSafe exists to reduce landslide risk and improve land safety throughout Sri Lanka. We believe that everyone—homeowners, land buyers, and developers—deserves access to clear, science‑based geological assessments.</p>
+          <p>Our goal is to make professional risk evaluations both affordable and easy to understand, so you can make confident decisions about your property.</p>
+          <p>We focus on protecting families and communities by delivering practical, actionable insights—not just technical reports.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="light-bg">
+      <div class="container">
+        <h2 class="section-title">Our Story</h2>
+        <div class="section-content">
+          <p>GSafe was created in response to Sri Lanka’s growing vulnerability to landslides, driven by climate change, deforestation, and rapid hillside development.</p>
+          <p>Historically, professional geological risk assessments were either unavailable or too complex and expensive for ordinary citizens. We saw a critical gap—and a responsibility.</p>
+          <p>Since our founding, GSafe has been committed to bridging that gap with transparent communication, local expertise, and recommendations you can actually use.</p>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="container">
+        <h2 class="section-title">Why GSafe?</h2>
+        <div class="features-grid">
+          <div class="feature-card">
+            <h3>Science‑Based Evaluations</h3>
+            <p>All assessments are conducted by licensed geologists using field data and local terrain knowledge.</p>
+          </div>
+          <div class="feature-card">
+            <h3>Simple, Clear Reports</h3>
+            <p>We avoid jargon—our reports are written so anyone can understand their land’s risks.</p>
+          </div>
+          <div class="feature-card">
+            <h3>WhatsApp‑Friendly</h3>
+            <p>Communicate with us instantly via WhatsApp—no waiting on calls or emails.</p>
+          </div>
+          <div class="feature-card">
+            <h3>Local Expertise</h3>
+            <p>We know Sri Lanka’s hills, soils, and rainfall patterns inside and out.</p>
+          </div>
+          <div class="feature-card">
+            <h3>Transparent Pricing</h3>
+            <p>No hidden fees. Packages start from Rs. 10,000 with clear scope.</p>
+          </div>
+          <div class="feature-card">
+            <h3>Add‑On Services</h3>
+            <p>Drone mapping, soil testing, and drainage analysis available when you need more.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="light-bg">
+      <div class="container">
+        <h2 class="section-title">Our Team</h2>
+        <div class="team-grid">
+          <div class="team-card">
+            <h3>Founder / Operator</h3>
+            <p>Oversees operations, client communication, and strategic partnerships to ensure seamless service delivery.</p>
+          </div>
+          <div class="team-card">
+            <h3>Licensed Geologists</h3>
+            <p>Conduct on‑site evaluations, analyze slope stability, and produce detailed risk reports.</p>
+          </div>
+          <div class="team-card">
+            <h3>Drone & Field Technicians</h3>
+            <p>Capture high‑resolution terrain data and support field surveys with precision tools.</p>
+          </div>
+          <div class="team-card">
+            <h3>Report Analysts</h3>
+            <p>Transform raw field data into clear visuals, GIS maps, and actionable recommendations.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="container">
+        <h2 class="section-title">How We Work</h2>
+        <div class="process-grid">
+          <div class="process-step">
+            <h3>1. Contact Us</h3>
+            <p>Reach out via WhatsApp or our contact form.</p>
+          </div>
+          <div class="process-step">
+            <h3>2. Site Visit</h3>
+            <p>Our geologist visits your land for a hands‑on evaluation.</p>
+          </div>
+          <div class="process-step">
+            <h3>3. Risk Report</h3>
+            <p>Receive a clear, illustrated report within days.</p>
+          </div>
+          <div class="process-step">
+            <h3>4. Next Steps</h3>
+            <p>Get practical advice on mitigation, construction, or monitoring.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="container">
+        <h2 class="section-title">Have Questions?</h2>
+        <div class="contact-form">
+          <form id="contactForm">
+            <div class="form-group">
+              <label for="name">Name *</label>
+              <input type="text" id="name" name="entry.1157602704" class="form-control" required />
+            </div>
+            <div class="form-group">
+              <label for="phone">Phone *</label>
+              <input type="tel" id="phone" name="entry.1686807660" class="form-control" required />
+            </div>
+            <div class="form-group">
+              <label for="email">Email</label>
+              <input type="email" id="email" name="entry.891082016" class="form-control" />
+            </div>
+            <div class="form-group">
+              <label for="message">Message</label>
+              <textarea id="message" name="entry.729800823" rows="4" class="form-control"></textarea>
+            </div>
+            <button type="submit" class="btn">Send Message</button>
+            <div id="formMessage" class="form-message"></div>
+          </form>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container">
+      <div class="footer-content">
+        <div class="footer-brand">
+          <h3>GSafe</h3>
+          <p>Professional geological risk assessment for Sri Lanka</p>
+        </div>
+        <div class="footer-links">
+          <a href="/">Home</a>
+          <a href="/services">Services</a>
+          <a href="/pricing">Pricing</a>
+          <a href="/about">About</a>
+          <a href="/contact">Contact</a>
+        </div>
+        <div class="footer-contact">
+          <p>WhatsApp: +94 75 824 4216</p>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        All assessments are professional opinions based on available data and site visits.
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // Mobile navigation toggle
+    const hamburger = document.getElementById('hamburger');
+    const navLinks = document.getElementById('navLinks');
+
+    hamburger.addEventListener('click', () => {
+      navLinks.classList.toggle('active');
+    });
+
+    // Form submission handling
+    const contactForm = document.getElementById('contactForm');
+    const formMessage = document.getElementById('formMessage');
+
+    contactForm.addEventListener('submit', async (e) => {
+      e.preventDefault();
+
+      const name = document.getElementById('name').value.trim();
+      const phone = document.getElementById('phone').value.trim();
+
+      if (!name || !phone) {
+        formMessage.textContent = 'Name and Phone are required.';
+        formMessage.className = 'form-message error';
+        return;
+      }
+
+      const formData = new FormData(contactForm);
+      const url = 'https://docs.google.com/forms/d/e/1FAIpQLSfQg8CPj_vdeZtrwvXkkSqZbbxOX5CBKfCZOip8mprbt9zvRQ/formResponse';
+
+      try {
+        const response = await fetch(url, {
+          method: 'POST',
+          mode: 'no-cors',
+          body: formData
+        });
+
+        contactForm.reset();
+        formMessage.textContent = 'Thank you! We will contact you as soon as possible.';
+        formMessage.className = 'form-message success';
+      } catch (error) {
+        formMessage.textContent = 'Something went wrong. Please try again.';
+        formMessage.className = 'form-message error';
+      }
+    });
+  </script>
+</body>
+</html>
